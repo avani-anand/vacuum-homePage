@@ -157,11 +157,29 @@ const RoboticVacuum = () => {
       {/* Gallery Section */}
       <SectionWrapper className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Gallery</h2>
-          <div className="relative rounded-2xl overflow-hidden bg-gray-900">
-            <div className="w-full aspect-video flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Gallery</h2>
+            <p className="text-base sm:text-lg text-gray-600">Explore our AI-powered robotic vacuum in action</p>
+          </motion.div>
+          
+          <div className="relative rounded-3xl overflow-hidden bg-gray-900 shadow-2xl">
+            {/* Main Display */}
+            <motion.div 
+              className="w-full aspect-video flex items-center justify-center bg-black"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               {gallery[0] && gallery[0].endsWith('.mp4') ? (
                 <video
+                  key={gallery[0]}
                   src={gallery[0]}
                   autoPlay
                   loop
@@ -171,31 +189,53 @@ const RoboticVacuum = () => {
                 />
               ) : (
                 <img
+                  key={gallery[0]}
                   src={gallery[0]}
                   alt="Gallery item 1"
                   className="w-full h-full object-cover"
                 />
               )}
-            </div>
-            <div className="grid grid-cols-3 gap-2 p-4">
+            </motion.div>
+            
+            {/* Thumbnails */}
+            <motion.div 
+              className="grid grid-cols-4 gap-3 p-6 bg-gray-800"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               {gallery.map((mediaSrc, index) => (
-                <div key={index} className="aspect-square rounded overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+                <motion.button
+                  key={index}
+                  onClick={() => {
+                    // This would require state management to actually change the main display
+                    // For now, this is just for interaction feedback
+                  }}
+                  className="aspect-square rounded-lg overflow-hidden cursor-pointer group relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10" />
                   {mediaSrc.endsWith('.mp4') ? (
                     <video
                       src={mediaSrc}
                       muted
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   ) : (
                     <img
                       src={mediaSrc}
                       alt={`Gallery thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   )}
-                </div>
+                  <div className="absolute bottom-2 left-2 text-white text-xs font-semibold bg-black/50 px-2 py-1 rounded">
+                    {index + 1}/{gallery.length}
+                  </div>
+                </motion.button>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </SectionWrapper>
