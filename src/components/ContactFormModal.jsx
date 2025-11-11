@@ -72,7 +72,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative bg-white/95 dark:bg-gray-900/90 border border-white/30 dark:border-gray-700/30 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto backdrop-blur-md">
+            <div className="relative bg-white/95 dark:bg-gray-900/90 border border-white/30 dark:border-gray-700/30 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] backdrop-blur-md">
               {/* Dotted background behind the modal content (visible through translucent panel) */}
               <div className="absolute inset-0 pointer-events-none">
                 <DottedSurface className="w-full h-full" />
@@ -89,7 +89,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
               </div>
 
               {/* Modal Body */}
-              <div className="p-6 sm:p-8">
+              <div className="p-4 sm:p-6 pb-11 max-h-[85vh] overflow-y-auto">
                 {/* Title */}
                 <h3 className="text-2xl sm:text-3xl font-bold text-teal-700 mb-3 text-center">
                   LET'S GET IN TOUCH
@@ -102,7 +102,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                   action="https://formspree.io/f/mzzypkdk"
                   method="POST"
                   onSubmit={handleSubmit}
-                  className="space-y-5"
+                  className="space-y-5 pb-6"
                 >
                   {/* Full Name */}
                   <div>
@@ -117,7 +117,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       id="fullname"
                       name="fullname"
                       required
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-600"
                       placeholder="Type Here"
                     />
                   </div>
@@ -135,7 +135,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-600"
                       placeholder="Type Here"
                     />
                   </div>
@@ -153,7 +153,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       id="phone"
                       name="phone"
                       required
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-600"
                       placeholder="Type Here"
                     />
                   </div>
@@ -170,7 +170,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       type="text"
                       id="company"
                       name="company"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-600"
                       placeholder="Type Here"
                     />
                   </div>
@@ -188,7 +188,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       name="message"
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all resize-none placeholder:text-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all resize-none placeholder:text-gray-600"
                       placeholder="Tell us about your needs, eg. request a meeting..."
                     />
                   </div>
@@ -200,11 +200,11 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       id="privacy"
                       checked={privacyChecked}
                       onChange={(e) => setPrivacyChecked(e.target.checked)}
-                      className="mt-1 w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
+                      className="mt-1 w-4 h-4 text-teal-600 border-gray-300 rounded-sm focus:ring-teal-500"
                     />
                     <label
                       htmlFor="privacy"
-                      className="text-sm text-gray-600 leading-relaxed"
+                      className="text-sm text-gray-700 leading-relaxed"
                     >
                       By checking this you agree to our privacy policy and to marketing communication (we promise not send any spam) you can unsubscribe at any time
                     </label>
