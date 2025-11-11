@@ -6,6 +6,8 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactFormModal from '../components/ContactFormModal';
 import { DottedSurface } from '../components/ui/dotted-surface';
+import { CategoryList } from '../components/ui/category-list';
+import { Zap, Wind, Clock, Leaf, Hand } from 'lucide-react';
 
 const RoboticVacuum = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,11 +33,11 @@ const RoboticVacuum = () => {
   ];
 
   const benefits = [
-    'Effortless cleaning automation',
-    'Improved indoor air quality',
-    'Time-saving convenience',
-    'Energy-efficient operation',
-    'Reduced manual cleaning effort'
+    { title: 'Effortless cleaning automation', subtitle: 'Set it and forget it with intelligent scheduling', icon: 'Zap' },
+    { title: 'Improved indoor air quality', subtitle: 'HEPA filters capture 99.97% of allergens', icon: 'Wind' },
+    { title: 'Time-saving convenience', subtitle: 'Reclaim hours of your week for what matters', icon: 'Clock' },
+    { title: 'Energy-efficient operation', subtitle: 'Smart power management reduces energy costs', icon: 'Leaf' },
+    { title: 'Reduced manual cleaning effort', subtitle: 'Less work for you, cleaner floors guaranteed', icon: 'Hand' }
   ];
 
   const gallery = [
@@ -99,6 +101,61 @@ const RoboticVacuum = () => {
         </div>
       </SectionWrapper>
 
+
+      {/* Key Features Section */}
+      <SectionWrapper className="bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+              Advanced capabilities that make AI-Powered Robotic Vacuum Cleaners stand out
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex items-start space-x-3 sm:space-x-4 p-4 sm:p-6 bg-gray-50 rounded-xl border border-gray-100"
+              >
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-900 to-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">{feature}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* Gallery Section */}
       <SectionWrapper className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -139,42 +196,9 @@ const RoboticVacuum = () => {
         </div>
       </SectionWrapper>
 
-      {/* Key Features Section */}
-      <SectionWrapper className="bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              Advanced capabilities that make AI-Powered Robotic Vacuum Cleaners stand out
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-start space-x-3 sm:space-x-4 p-4 sm:p-6 bg-gray-50 rounded-xl border border-gray-100"
-              >
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-900 to-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 font-medium">{feature}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
+
+
+
 
       {/* Specs & Benefits (two-column) */}
       <SectionWrapper className="bg-gray-50">
@@ -190,57 +214,62 @@ const RoboticVacuum = () => {
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">Detailed specs alongside the key benefits to help you evaluate the product quickly.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Left: Technical Specifications */}
+          <div className="space-y-8">
+            {/* Top: Technical Specifications */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
               <h3 className="text-lg font-semibold text-gray-900">Technical Specifications</h3>
-              {specifications.map((spec, index) => (
-                <motion.div
-                  key={spec.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.04 }}
-                  className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 p-4 bg-white rounded-lg shadow-sm border border-gray-100"
-                >
-                  <span className="text-sm sm:text-base text-gray-600 font-medium">{spec.label}:</span>
-                  <span className="text-sm sm:text-base text-gray-900 font-semibold">{spec.value}</span>
-                </motion.div>
-              ))}
+              <div className="space-y-4">
+                {specifications.map((spec, index) => (
+                  <motion.div
+                    key={spec.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.04 }}
+                    className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 p-4 bg-white rounded-lg shadow-sm border border-gray-100"
+                  >
+                    <span className="text-sm sm:text-base text-gray-600 font-medium">{spec.label}:</span>
+                    <span className="text-sm sm:text-base text-gray-900 font-semibold">{spec.value}</span>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
 
-            {/* Right: Key Benefits */}
+            {/*  Key Benefits using CategoryList */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 1 }}
+              whileInView={{ opacity: 1, y: 10 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-4"
+
+
             >
-              <h3 className="text-lg font-semibold text-gray-900">Key Benefits</h3>
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.04 }}
-                  className="flex items-start space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-100"
-                >
-                  <div className="w-6 h-6 bg-gradient-to-br from-blue-900 to-slate-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700 font-medium">{benefit}</span>
-                </motion.div>
-              ))}
+              <CategoryList
+                title="Key Benefits"
+                categories={benefits.map((benefit, index) => {
+                  const iconMap = {
+                    Zap: <Zap className="w-5 h-5" />,
+                    Wind: <Wind className="w-5 h-5" />,
+                    Clock: <Clock className="w-5 h-5" />,
+                    Leaf: <Leaf className="w-5 h-5" />,
+                    Hand: <Hand className="w-5 h-5" />
+                  };
+                  return {
+                    id: index,
+                    title: benefit.title,
+                    subtitle: benefit.subtitle,
+                    icon: iconMap[benefit.icon],
+                    onClick: () => console.log(`Selected: ${benefit.title}`),
+                  };
+                })}
+                className="bg-white"
+              />
             </motion.div>
           </div>
         </div>

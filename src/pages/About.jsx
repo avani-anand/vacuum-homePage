@@ -3,30 +3,31 @@ import { Link } from 'react-router-dom';
 import SectionWrapper from '../components/SectionWrapper';
 import ContactFormModal from '../components/ContactFormModal';
 import { DottedSurface } from '../components/ui/dotted-surface';
+import { Stethoscope, Home, Cpu, Microscope } from 'lucide-react';
 import { useState } from 'react';
 
 const About = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const services = [
     {
-      icon: '🏥',
       title: 'Healthcare Robotics',
-      description: 'AI-powered medical devices and robotic systems for enhanced patient care and surgical precision.'
+      description: 'AI-powered medical devices and robotic systems for enhanced patient care and surgical precision.',
+      icon: <Stethoscope className="w-6 h-6 text-white" />
     },
     {
-      icon: '🏠',
       title: 'Household Automation',
-      description: 'Smart home solutions with robotic assistance for daily household tasks and maintenance.'
+      description: 'Smart home solutions with robotic assistance for daily household tasks and maintenance.',
+      icon: <Home className="w-6 h-6 text-white" />
     },
     {
-      icon: '🤖',
       title: 'AI Development',
-      description: 'Custom AI solutions and machine learning models for various industry applications.'
+      description: 'Custom AI solutions and machine learning models for various industry applications.',
+      icon: <Cpu className="w-6 h-6 text-white" />
     },
     {
-      icon: '🔬',
       title: 'Research & Innovation',
-      description: 'Cutting-edge research in robotics, AI, and their applications in healthcare and automation.'
+      description: 'Cutting-edge research in robotics, AI, and their applications in healthcare and automation.',
+      icon: <Microscope className="w-6 h-6 text-white" />
     }
   ];
 
@@ -134,7 +135,7 @@ const About = () => {
         </div>
       </SectionWrapper>
 
-      {/* Services */}
+     {/* Services */}
       <SectionWrapper className="bg-white">
         <div className="text-center mb-12">
           <motion.h2

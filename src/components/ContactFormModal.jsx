@@ -72,7 +72,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto backdrop-blur-sm">
+            <div className="relative bg-white/95 dark:bg-gray-900/90 border border-white/30 dark:border-gray-700/30 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto backdrop-blur-md">
               {/* Dotted background behind the modal content (visible through translucent panel) */}
               <div className="absolute inset-0 pointer-events-none">
                 <DottedSurface className="w-full h-full" />
@@ -108,7 +108,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                   <div>
                     <label
                       htmlFor="fullname"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-800 mb-2"
                     >
                       Full Name <span className="text-red-500">*</span>
                     </label>
@@ -126,7 +126,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-800 mb-2"
                     >
                       Email <span className="text-red-500">*</span>
                     </label>
@@ -144,7 +144,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-800 mb-2"
                     >
                       Phone Number <span className="text-red-500">*</span>
                     </label>
@@ -162,7 +162,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                   <div>
                     <label
                       htmlFor="company"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-800 mb-2"
                     >
                       Company
                     </label>
@@ -179,7 +179,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-gray-800 mb-2"
                     >
                       Message <span className="text-red-500">*</span>
                     </label>
