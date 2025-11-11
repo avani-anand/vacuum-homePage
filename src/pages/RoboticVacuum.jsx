@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import SectionWrapper from '../components/SectionWrapper';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ContactFormModal from '../components/ContactFormModal';
 import { DottedSurface } from '../components/ui/dotted-surface';
 import { CategoryList } from '../components/ui/category-list';
@@ -160,39 +158,45 @@ const RoboticVacuum = () => {
       <SectionWrapper className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Gallery</h2>
-          <Carousel 
-            showArrows={true} 
-            autoPlay={true} 
-            infiniteLoop={true}
-            showThumbs={false}
-            interval={5000}
-            stopOnHover={false}
-            className="rounded-2xl"
-          >
-            {gallery.map((mediaSrc, index) => {
-              const isVideo = mediaSrc.endsWith('.mp4');
-              return (
-                <div key={index} className="h-[220px] sm:h-[300px] md:h-[360px] lg:h-[420px]">
-                    {isVideo ? (
-                      <video
-                        src={mediaSrc}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="object-cover sm:object-contain h-full w-full"
-                      />
-                    ) : (
-                      <img
-                        src={mediaSrc}
-                        alt={`Robotic vacuum gallery image ${index + 1}`}
-                        className="object-cover sm:object-contain h-full w-full"
-                      />
-                    )}
+          <div className="relative rounded-2xl overflow-hidden bg-gray-900">
+            <div className="w-full aspect-video flex items-center justify-center">
+              {gallery[0] && gallery[0].endsWith('.mp4') ? (
+                <video
+                  src={gallery[0]}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={gallery[0]}
+                  alt="Gallery item 1"
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+            <div className="grid grid-cols-3 gap-2 p-4">
+              {gallery.map((mediaSrc, index) => (
+                <div key={index} className="aspect-square rounded overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+                  {mediaSrc.endsWith('.mp4') ? (
+                    <video
+                      src={mediaSrc}
+                      muted
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={mediaSrc}
+                      alt={`Gallery thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </div>
-              );
-            })}
-          </Carousel>
+              ))}
+            </div>
+          </div>
         </div>
       </SectionWrapper>
 
