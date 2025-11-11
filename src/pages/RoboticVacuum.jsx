@@ -9,6 +9,7 @@ import { Zap, Wind, Clock, Leaf, Hand } from 'lucide-react';
 
 const RoboticVacuum = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const features = [
     'AI-powered navigation and mapping',
     'Advanced obstacle detection and avoidance',
@@ -24,7 +25,7 @@ const RoboticVacuum = () => {
     { label: 'Battery Life', value: 'Up to 120 minutes' },
     { label: 'Coverage Area', value: 'Up to 2000 sq ft' },
     { label: 'Noise Level', value: '<65 dB' },
-    // { label: 'Dimensions', value: '13.8" x 13.8" x 3.6"' },
+    { label: 'Dimensions', value: '13.8" x 13.8" x 3.6"' },
     { label: 'Weight', value: '6.5 lbs' },
     { label: 'Connectivity', value: 'Wi-Fi, Bluetooth' },
     { label: 'App Support', value: 'iOS & Android' }
@@ -177,10 +178,10 @@ const RoboticVacuum = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              {gallery[0] && gallery[0].endsWith('.mp4') ? (
+              {gallery[activeGalleryIndex] && gallery[activeGalleryIndex].endsWith('.mp4') ? (
                 <video
-                  key={gallery[0]}
-                  src={gallery[0]}
+                  key={`video-${activeGalleryIndex}`}
+                  src={gallery[activeGalleryIndex]}
                   autoPlay
                   loop
                   muted
@@ -189,9 +190,9 @@ const RoboticVacuum = () => {
                 />
               ) : (
                 <img
-                  key={gallery[0]}
-                  src={gallery[0]}
-                  alt="Gallery item 1"
+                  key={`img-${activeGalleryIndex}`}
+                  src={gallery[activeGalleryIndex]}
+                  alt={`Gallery item ${activeGalleryIndex + 1}`}
                   className="w-full h-full object-cover"
                 />
               )}
@@ -208,15 +209,16 @@ const RoboticVacuum = () => {
               {gallery.map((mediaSrc, index) => (
                 <motion.button
                   key={index}
-                  onClick={() => {
-                    // This would require state management to actually change the main display
-                    // For now, this is just for interaction feedback
-                  }}
-                  className="aspect-square rounded-lg overflow-hidden cursor-pointer group relative"
+                  onClick={() => setActiveGalleryIndex(index)}
+                  className={`aspect-square rounded-lg overflow-hidden cursor-pointer group relative border-2 transition-all ${
+                    activeGalleryIndex === index ? 'border-blue-500 border-opacity-100' : 'border-transparent hover:border-blue-400'
+                  }`}
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10" />
+                  <div className={`absolute inset-0 transition-all z-10 ${
+                    activeGalleryIndex === index ? 'bg-black/0' : 'bg-black/30 group-hover:bg-black/10'
+                  }`} />
                   {mediaSrc.endsWith('.mp4') ? (
                     <video
                       src={mediaSrc}
