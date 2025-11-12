@@ -6,6 +6,17 @@ import ContactFormModal from '../components/ContactFormModal';
 import { DottedSurface } from '../components/ui/dotted-surface';
 import { CategoryList } from '../components/ui/category-list';
 import { Zap, Wind, Clock, Leaf, Hand } from 'lucide-react';
+import * as React from "react"
+import { Card, CardContent } from "@/components/ui/card"
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 
 const RoboticVacuum = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -142,63 +153,47 @@ const RoboticVacuum = () => {
 
 
 
+{/* gallery section  */}
+<Carousel className="w-full max-w-lg mx-auto"> {/* Set a width for the carousel */}
+      <CarouselContent>
 
-
-
-
-
-
-
-
-
-
-
-
-      {/* Gallery Section */}
-      <SectionWrapper className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Gallery</h2>
-          <div className="relative rounded-2xl overflow-hidden bg-gray-900">
-            <div className="w-full aspect-video flex items-center justify-center">
-              {gallery[0] && gallery[0].endsWith('.mp4') ? (
-                <video
-                  src={gallery[0]}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <img
-                  src={gallery[0]}
-                  alt="Gallery item 1"
-                  className="w-full h-full object-cover"
-                />
-              )}
-            </div>
-            <div className="grid grid-cols-3 gap-2 p-4">
-              {gallery.map((mediaSrc, index) => (
-                <div key={index} className="aspect-square rounded overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
-                  {mediaSrc.endsWith('.mp4') ? (
+        {gallery.map((item, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+  
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  {item.endsWith('.mp4') ? (
                     <video
-                      src={mediaSrc}
+                      src={item}
+                      autoPlay
                       muted
+                      loop
+                      playsInline
                       className="w-full h-full object-cover"
-                    />
+                    >
+                      Your browser does not support the video tag.
+                    </video>
                   ) : (
                     <img
-                      src={mediaSrc}
-                      alt={`Gallery thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      src={item}
+                      alt={`Gallery item ${index + 1}`}
+                      className="w-full h-full object-cover rounded-md"
                     />
                   )}
-                </div>
-              ))}
+                </CardContent>
+              </Card>
             </div>
-          </div>
-        </div>
-      </SectionWrapper>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+     <CarouselPrevious className="bg-primary text-primary-foreground hover:bg-primary/80" />
+      <CarouselNext className="bg-primary text-primary-foreground hover:bg-primary/80" />
+
+    </Carousel>
+
+
 
 
 
