@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import ContactFormModal from "./ContactFormModal";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/products/robotic-vacuum" || location.pathname === "/";
 
@@ -62,7 +64,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -81,6 +83,16 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
+
+            {/* Reach Us button (desktop) */}
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className={`ml-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                isHomePage && !isScrolled ? "bg-white text-black" : "bg-primary-600 text-white"
+              }`}
+            >
+              Reach Us
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -137,10 +149,23 @@ const Navbar = () => {
                     {item.name}
                   </Link>
                 ))}
+
+                {/* Reach Us (mobile) */}
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsContactOpen(true);
+                  }}
+                  className="w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-700 hover:bg-gray-50"
+                >
+                  Reach Us
+                </button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+        {/* Contact modal controlled from navbar */}
+        <ContactFormModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       </div>
     </motion.nav>
   );

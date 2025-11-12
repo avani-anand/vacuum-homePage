@@ -5,7 +5,7 @@ import SectionWrapper from '../components/SectionWrapper';
 import ContactFormModal from '../components/ContactFormModal';
 import { DottedSurface } from '../components/ui/dotted-surface';
 import { CategoryList } from '../components/ui/category-list';
-import { Zap, Wind, Clock, Leaf, Hand } from 'lucide-react';
+import { Zap, Wind, Clock, Leaf, Hand, Battery, Map, Volume2, Ruler, Scale, Wifi, Smartphone } from 'lucide-react';
 import * as React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -32,10 +32,10 @@ const RoboticVacuum = () => {
   ];
 
   const specifications = [
-    { label: 'Battery Life', value: 'Up to 120 minutes' },
-    { label: 'Coverage Area', value: 'Up to 2000 sq ft' },
+    { label: 'Battery Life', value: ' Up to 120 minutes' },
+    { label: 'Coverage Area ', value: 'Up to 2000 sq ft' },
     { label: 'Noise Level', value: '<65 dB' },
-    // { label: 'Dimensions', value: '13.8" x 13.8" x 3.6"' },
+    { label: 'Dimensions', value: '13.8" x 13.8" x 3.6"' },
     { label: 'Weight', value: '6.5 lbs' },
     { label: 'Connectivity', value: 'Wi-Fi, Bluetooth' },
     { label: 'App Support', value: 'iOS & Android' }
@@ -122,9 +122,10 @@ const RoboticVacuum = () => {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              Advanced capabilities that make AI-Powered Robotic Vacuum Cleaners stand out
-            </p>
+             <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Advanced capabilities that make AI-Powered Robotic Vacuum Cleaners stand out
+             </p>
+           
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {features.map((feature, index) => (
@@ -209,12 +210,14 @@ const RoboticVacuum = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Technical Specifications & Key Benefits</h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">Detailed specs alongside the key benefits to help you evaluate the product quickly.</p>
+            {/* <div className="flex items-center justify-center gap-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Technical Specification</h2>
+               <p className="text-sm text-gray-600"> Key device specs and connectivity details for performance and compatibility.</p>
+
+            </div> */}
           </motion.div>
 
           <div className="space-y-8">
-            {/* Top: Technical Specifications */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -222,22 +225,35 @@ const RoboticVacuum = () => {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              <h3 className="text-lg font-semibold text-gray-900">Technical Specifications</h3>
-              <div className="space-y-4">
-                {specifications.map((spec, index) => (
-                  <motion.div
-                    key={spec.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.04 }}
-                    className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 p-4 bg-white rounded-lg shadow-sm border border-gray-100"
-                  >
-                    <span className="text-sm sm:text-base text-gray-600 font-medium">{spec.label}:</span>
-                    <span className="text-sm sm:text-base text-gray-900 font-semibold">{spec.value}</span>
-                  </motion.div>
-                ))}
-              </div>
+              {/* Use CategoryList to keep UI consistent with Key Benefits */}
+              <CategoryList
+                title="Technical Specification"
+
+                categories={specifications.map((spec, index) => {
+                  // icon nodes for each spec to match Key Benefits style
+                  const specIconMap = {
+                    'Battery Life': <Battery className="w-5 h-5" />,
+                    'Coverage Area': <Map className="w-5 h-5" />,
+                    'Noise Level': <Volume2 className="w-5 h-5" />,
+                    'Dimensions': <Ruler className="w-5 h-5" />,
+                    'Weight': <Scale className="w-5 h-5" />,
+                    'Connectivity': <Wifi className="w-5 h-5" />,
+                    'App Support': <Smartphone className="w-5 h-5" />,
+                  };
+
+                  const labelKey = spec.label.trim();
+
+                  return {
+                    id: `${labelKey}-${index}`,
+                    // combine label and value on one line as requested
+                    title: `${labelKey} - ${spec.value}`,
+                    subtitle: undefined,
+                    icon: specIconMap[labelKey] ?? <span className="w-5 h-5 inline-block">ℹ️</span>,
+                    onClick: () => console.log(`Spec selected: ${labelKey}`),
+                  };
+                })}
+                className="bg-white"
+              />
             </motion.div>
 
             {/*  Key Benefits using CategoryList */}

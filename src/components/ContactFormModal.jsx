@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { XMarkIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { DottedSurface } from './ui/dotted-surface';
 
@@ -51,7 +52,13 @@ const ContactFormModal = ({ isOpen, onClose }) => {
     setPrivacyChecked(false);
   };
 
-  return (
+  // prevent rendering into nav's stacking/transform context by portaling to body
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -63,7 +70,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             onClick={closeModal}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
           />
-          
+
           {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -252,7 +259,8 @@ const ContactFormModal = ({ isOpen, onClose }) => {
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 
