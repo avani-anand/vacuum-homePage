@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SectionWrapper from '../components/SectionWrapper';
 import ContactFormModal from '../components/ContactFormModal';
-// import { DottedSurface } from '../components/ui/dotted-surface';
 import { ExpertiseList } from '../components/ui/expertise-list';
 import { Stethoscope, Home, Cpu, Microscope } from 'lucide-react';
 import { useState } from 'react';
