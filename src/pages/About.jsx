@@ -226,26 +226,26 @@ const About = () => {
 
 
       {/* Call to Action */}
-      <SectionWrapper className="relative min-h-[400px] bg-blue-300 overflow-hidden">
+      <SectionWrapper className="relative min-h-[260px] sm:min-h-[400px] bg-blue-300 overflow-hidden">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative text-center max-w-3xl mx-auto"
+          className="relative text-center max-w-3xl mx-auto px-4 sm:px-0"
         >
-          <h2 className="font-geist text-3xl font-bold text-white dark:text-gray-900 mb-6">
+          <h2 className="font-geist text-2xl sm:text-3xl font-bold text-white dark:text-gray-900 mb-3 sm:mb-6">
             Ready to Transform the Future?
           </h2>
-          <p className="font-manrope text-xl text-white/80 dark:text-gray-600 mb-8 leading-relaxed">
+          <p className="font-manrope text-sm sm:text-base text-white/80 dark:text-gray-600 mb-4 sm:mb-8 leading-relaxed">
             Join us in revolutionizing healthcare and automation with AI-powered robotics. 
             Let's build a smarter, healthier future together.
           </p>
-          <div className="font-geist flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="font-geist flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="btn-secondary bg-white text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
+              className="btn-secondary bg-white text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 py-2 px-4 text-sm"
             >
               Get in Touch
             </button>

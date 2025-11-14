@@ -84,8 +84,7 @@ const Navbar = () => {
       }`}>
       <div className="container-custom">
       
-        <div className="flex items-center h-16 px-4 sm:px-6 lg:px-8">
-          {/* Logo (Group 1 - Left) */}
+<div className="flex items-center justify-between h-16 px-6 sm:px-6 lg:px-8">          {/* Logo (Group 1 - Left) */}
           <Link
             to="/products/robotic-vacuum"
             className="flex items-center space-x-2">

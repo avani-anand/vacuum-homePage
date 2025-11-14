@@ -151,46 +151,56 @@ const RoboticVacuum = () => {
 
 
 {/* gallery section  */}
-<Carousel className="w-full max-w-lg mx-auto"   opts={{  loop: true, }} > 
-     
+<div className="relative">
+  <Carousel className="w-full max-w-lg mx-auto" opts={{ loop: true }}>
 
-      <CarouselContent>
+    <CarouselContent>
 
-        {gallery.map((item, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
-              <Card>
-  
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  {item.endsWith('.mp4') ? (
-                    <video
-                      src={item}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover"
-                    >
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : (
-                    <img
-                      src={item}
-                      alt={`Gallery item ${index + 1}`}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+      {gallery.map((item, index) => (
+        <CarouselItem key={index}>
+          <div className="p-1">
+            <Card>
 
-     <CarouselPrevious className="bg-primary text-primary-foreground hover:bg-primary/80" />
-      <CarouselNext className="bg-primary text-primary-foreground hover:bg-primary/80" />
+              <CardContent className="flex aspect-square items-center justify-center p-6">
+                {item.endsWith('.mp4') ? (
+                  <video
+                    src={item}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img
+                    src={item}
+                    alt={`Gallery item ${index + 1}`}
+                    className="w-full h-full object-cover rounded-md"
+                  />
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
 
-    </Carousel>
+    <CarouselPrevious className="bg-primary text-primary-foreground hover:bg-primary/80" />
+    <CarouselNext className="bg-primary text-primary-foreground hover:bg-primary/80" />
+
+  </Carousel>
+
+  {/* Mobile-only swipe hint (three-dot indicator like attached design) */}
+  <div className="sm:hidden absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center px-3 py-2 rounded-full shadow-md bg-purple-800">
+    <span className="sr-only">Swipe to view gallery</span>
+    <span aria-hidden className="w-2 h-2 rounded-full bg-white opacity-90 inline-block mr-2" />
+    <span aria-hidden className="w-3 h-3 rounded-full bg-amber-400 inline-block animate-pulse shadow-md" />
+    <span aria-hidden className="w-2 h-2 rounded-full bg-white opacity-90 inline-block ml-2" />
+  </div>
+
+</div>
 
 
 
