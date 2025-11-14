@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import SectionWrapper from '../components/SectionWrapper';
 import ContactFormModal from '../components/ContactFormModal';
-import { DottedSurface } from '../components/ui/dotted-surface';
 import { CategoryList } from '../components/ui/category-list';
 import { Zap, Wind, Clock, Leaf, Hand, Battery, Map, Volume2, Ruler, Scale, Wifi, Smartphone } from 'lucide-react';
 import * as React from "react"
 import { Card, CardContent } from "@/components/ui/card"
+// import { HeroBackground } from "@/components/ui/hero-odyssey";
 
 import {
   Carousel,
@@ -58,18 +58,19 @@ const RoboticVacuum = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <div className="relative bg-gray-800 h-[400px] sm:h-[500px] md:h-[600px] flex items-center justify-center">
-        <video
+      <div className="relative bg-gray-800 h-[85vh] md:h-[95vh] flex items-center justify-center">
+         
+         {/* <video
           src="/images/vaccum.mp4"
           autoPlay
           loop
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover object-[center_85%] z-0"
-        />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10" />
+        /> */}
         
+        <div className="absolute inset-0  z-10" />
+
         <SectionWrapper className="relative z-20">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -151,11 +152,83 @@ const RoboticVacuum = () => {
 
 
 
+      {/* Featured Section */}
+      {/* <SectionWrapper className="bg-gray-50">
+        <div className="text-center mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-geist text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Featured in MedTech
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-manrope text-lg text-gray-600 max-w-2xl mx-auto">
+            Our innovative solutions are making waves in the medical technology
+            industry
+          </motion.p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-8 p-4">
+          <Card className="w-96">
+            <CardHeader color="blue-gray" className="relative h-56">
+              <img src="/q7.jpg" alt="card-image" />
+            </CardHeader>
+            <CardBody>
+              <Typography variant="h5" color="blue-gray" className="mb-2">
+                AtharvaAI
+              </Typography>
+              <Typography>
+                A futuristic AI Co-Pilot for General Surgery. Provides real-time
+                inputs to assist surgeons during operations.
+              </Typography>
+            </CardBody>
+            <CardFooter className="pt-0">
+              <Link to="/featured/atharvaai">
+                <Button>Read More</Button>
+              </Link>
+            </CardFooter>
+          </Card>
+          <Card className="w-96">
+            <CardHeader color="blue-gray" className="relative h-56">
+              <img src="/q6.jpg" alt="card-image" />
+            </CardHeader>
+            <CardBody>
+              <Typography variant="h5" color="blue-gray" className="mb-2">
+                CoeurAI - Stethoscope
+              </Typography>
+              <Typography>
+                Smart stethoscope with AI-powered diagnosis and remote patient
+                monitoring capabilities.
+              </Typography>
+            </CardBody>
+            <CardFooter className="pt-0">
+              <a
+                href="https://coeurai.net"
+                target="_blank"
+                rel="noopener noreferrer">
+                <Button>Read More</Button>
+              </a>
+            </CardFooter>
+          </Card>
+        </div>
+      </SectionWrapper> */}
+
+
+
+
 
 
 
 {/* gallery section  */}
-<Carousel className="w-full max-w-lg mx-auto"> {/* Set a width for the carousel */}
+<Carousel className="w-full max-w-lg mx-auto"   opts={{  loop: true, }} > 
+     
+
       <CarouselContent>
 
         {gallery.map((item, index) => (
@@ -291,25 +364,24 @@ const RoboticVacuum = () => {
       </SectionWrapper>
 
   {/* Call to Action */}
-  <SectionWrapper className="relative min-h-[420px] md:min-h-[480px] py-16 bg-black dark:bg-white overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          <DottedSurface className="w-full h-full" />
-        </div>
+
+      <SectionWrapper className=" bg-blue-300 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative text-center max-w-3xl mx-auto px-4 sm:px-6"
+          className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-white dark:text-gray-900 mb-4 sm:mb-6">
-            Ready to Experience AI-Powered Robotic Vacuum Cleaners?
+          <h2 className="font-geist text-3xl font-bold text-white mb-6">
+            Ready to Transform the Future?
           </h2>
-          <p className="text-lg sm:text-xl text-white/80 dark:text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-            Join the revolution in AI-powered solutions with our cutting-edge products.
+          <p className="font-manrope text-xl text-primary-100 mb-8 leading-relaxed">
+            Join us in revolutionizing healthcare and automation with AI-powered robotics. 
+            Let's build a smarter, healthier future together.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <button
+          <div className="font-geist flex flex-col sm:flex-row gap-4 justify-center">
+          <button
               onClick={() => setIsModalOpen(true)}
               className="btn-secondary bg-white text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
             >
@@ -324,6 +396,7 @@ const RoboticVacuum = () => {
           </div>
         </motion.div>
       </SectionWrapper>
+
 
       {/* Contact Form Modal */}
       <ContactFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

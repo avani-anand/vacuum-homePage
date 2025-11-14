@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SectionWrapper from '../components/SectionWrapper';
 import ContactFormModal from '../components/ContactFormModal';
-import { DottedSurface } from '../components/ui/dotted-surface';
-import { GradientCard } from '../components/ui/gradient-card';
+// import { DottedSurface } from '../components/ui/dotted-surface';
 import { ExpertiseList } from '../components/ui/expertise-list';
 import { Stethoscope, Home, Cpu, Microscope } from 'lucide-react';
 import { useState } from 'react';
@@ -14,22 +13,22 @@ const About = () => {
     {
       title: 'Healthcare Robotics',
       description: 'AI-powered medical devices and robotic systems for enhanced patient care and surgical precision.',
-      icon: <Stethoscope className="w-6 h-6 text-white" />
+      icon: <Stethoscope className="w-6 h-6 text-black" />
     },
     {
       title: 'Household Automation',
       description: 'Smart home solutions with robotic assistance for daily household tasks and maintenance.',
-      icon: <Home className="w-6 h-6 text-white" />
+      icon: <Home className="w-6 h-6 text-black" />
     },
     {
       title: 'AI Development',
       description: 'Custom AI solutions and machine learning models for various industry applications.',
-      icon: <Cpu className="w-6 h-6 text-white" />
+      icon: <Cpu className="w-6 h-6 text-black" />
     },
     {
       title: 'Research & Innovation',
       description: 'Cutting-edge research in robotics, AI, and their applications in healthcare and automation.',
-      icon: <Microscope className="w-6 h-6 text-white" />
+      icon: <Microscope className="w-6 h-6 text-black" />
     }
   ];
 
@@ -55,7 +54,7 @@ const About = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <h1 className="font-geist text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            About Logicboots
+            About Us
           </h1>
           <p className="font-manrope text-xl text-gray-600 leading-relaxed">
             Pioneering the future of AI-powered robotics to transform healthcare and household automation
@@ -95,7 +94,7 @@ const About = () => {
       </SectionWrapper>
 
 
-     {/* Services */}
+   {/* Services */}
       <SectionWrapper className="bg-white">
         <div className="text-center mb-12">
           <motion.h2
@@ -118,7 +117,7 @@ const About = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -126,12 +125,17 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="card group hover:shadow-lg transition-all duration-300 border-8"
             >
-              <GradientCard
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-              />
+              <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-200 transition-colors">
+                <span className="text-3xl">{service.icon}</span>
+              </div>
+              <h3 className="font-geist text-xl font-semibold text-gray-900 mb-3">
+                {service.title}
+              </h3>
+              <p className="font-manrope text-gray-600 leading-relaxed">
+                {service.description}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -222,10 +226,8 @@ const About = () => {
 
 
       {/* Call to Action */}
-      <SectionWrapper className="relative min-h-[400px] bg-black dark:bg-white overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          <DottedSurface className="w-full h-full" />
-        </div>
+      <SectionWrapper className="relative min-h-[400px] bg-blue-300 overflow-hidden">
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

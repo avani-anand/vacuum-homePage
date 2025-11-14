@@ -2,10 +2,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { XMarkIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { DottedSurface } from './ui/dotted-surface';
 
 const ContactFormModal = ({ isOpen, onClose }) => {
-  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success, error
+  const [formStatus, setFormStatus] = useState('idle'); 
   const [privacyChecked, setPrivacyChecked] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -52,7 +51,6 @@ const ContactFormModal = ({ isOpen, onClose }) => {
     setPrivacyChecked(false);
   };
 
-  // prevent rendering into nav's stacking/transform context by portaling to body
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -80,10 +78,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative bg-white/95 dark:bg-gray-900/90 border border-white/30 dark:border-gray-700/30 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] backdrop-blur-md">
-              {/* Dotted background behind the modal content (visible through translucent panel) */}
-              <div className="absolute inset-0 pointer-events-none">
-                <DottedSurface className="w-full h-full" />
-              </div>
+              {/* Decorative background removed (DottedSurface no longer exists) */}
               {/* Modal Header */}
               <div className="relative p-6 border-b border-gray-200">
                 <button

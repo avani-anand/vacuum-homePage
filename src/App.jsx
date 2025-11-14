@@ -24,7 +24,7 @@ function App() {
         <Navbar />
         <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Navigate to="/products/robotic-vacuum" replace />} />
+            <Route path="/" element={<RoboticVacuum />} />
             <Route path="/products/robotic-vacuum" element={<RoboticVacuum />} />
             <Route path="/about" element={<About />} />
           </Routes>
