@@ -113,8 +113,8 @@ const RoboticVacuum = () => {
 
 
       {/* Key Features Section */}
-      <SectionWrapper className="bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <SectionWrapper className="bg-white ">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 ">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -123,12 +123,12 @@ const RoboticVacuum = () => {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
-             <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Advanced capabilities that make AI-Powered Robotic Vacuum Cleaners stand out
              </p>
            
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 ">
             {features.map((feature, index) => (
               <motion.div
                 key={feature}
@@ -136,91 +136,16 @@ const RoboticVacuum = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-start space-x-3 sm:space-x-4 p-4 sm:p-6 bg-gray-50 rounded-xl border border-gray-100"
+                // className="flex items-start space-x-3 sm:space-x-4 p-4 sm:p-6 bg-gray-200 rounded-xl border border-gray-100"
+                className="flex justify-center items-center p-4 sm:p-6 bg-gray-200 rounded-xl border border-gray-100"
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-900 to-slate-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 font-medium">{feature}</span>
+               
+                <span className="text-gray-900 text-center font-medium">{feature}</span>
               </motion.div>
             ))}
           </div>
         </div>
       </SectionWrapper>
-
-
-
-      {/* Featured Section */}
-      {/* <SectionWrapper className="bg-gray-50">
-        <div className="text-center mb-12">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-geist text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Featured in MedTech
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-manrope text-lg text-gray-600 max-w-2xl mx-auto">
-            Our innovative solutions are making waves in the medical technology
-            industry
-          </motion.p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-8 p-4">
-          <Card className="w-96">
-            <CardHeader color="blue-gray" className="relative h-56">
-              <img src="/q7.jpg" alt="card-image" />
-            </CardHeader>
-            <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2">
-                AtharvaAI
-              </Typography>
-              <Typography>
-                A futuristic AI Co-Pilot for General Surgery. Provides real-time
-                inputs to assist surgeons during operations.
-              </Typography>
-            </CardBody>
-            <CardFooter className="pt-0">
-              <Link to="/featured/atharvaai">
-                <Button>Read More</Button>
-              </Link>
-            </CardFooter>
-          </Card>
-          <Card className="w-96">
-            <CardHeader color="blue-gray" className="relative h-56">
-              <img src="/q6.jpg" alt="card-image" />
-            </CardHeader>
-            <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2">
-                CoeurAI - Stethoscope
-              </Typography>
-              <Typography>
-                Smart stethoscope with AI-powered diagnosis and remote patient
-                monitoring capabilities.
-              </Typography>
-            </CardBody>
-            <CardFooter className="pt-0">
-              <a
-                href="https://coeurai.net"
-                target="_blank"
-                rel="noopener noreferrer">
-                <Button>Read More</Button>
-              </a>
-            </CardFooter>
-          </Card>
-        </div>
-      </SectionWrapper> */}
-
-
-
 
 
 
@@ -271,9 +196,8 @@ const RoboticVacuum = () => {
 
 
 
+     {/* specifications and key benfits */}
 
-
-      {/* Specs & Benefits (two-column) */}
       <SectionWrapper className="bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -290,7 +214,7 @@ const RoboticVacuum = () => {
             </div> */}
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-8 ">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -298,7 +222,6 @@ const RoboticVacuum = () => {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              {/* Use CategoryList to keep UI consistent with Key Benefits */}
               <CategoryList
                 title="Technical Specification"
 
@@ -318,10 +241,14 @@ const RoboticVacuum = () => {
 
                   return {
                     id: `${labelKey}-${index}`,
-                    // combine label and value on one line as requested
-                    title: `${labelKey} - ${spec.value}`,
-                    subtitle: undefined,
-                    icon: specIconMap[labelKey] ?? <span className="w-5 h-5 inline-block">ℹ️</span>,
+                        title: (
+                          <>
+                            <span>{labelKey}</span>
+                            <span className="text-gray-800 font-normal"> - {spec.value.trim()}</span>
+                          </>
+                        ),
+                        subtitle: undefined,
+                        icon: specIconMap[labelKey] ?? <span className="w-5 h-5 inline-block">ℹ️</span>,
                     onClick: () => console.log(`Spec selected: ${labelKey}`),
                   };
                 })}

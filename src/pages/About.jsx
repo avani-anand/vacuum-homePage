@@ -46,7 +46,7 @@ const About = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <SectionWrapper className="bg-gradient-to-br from-primary-50 to-blue-50">
+      <SectionWrapper className="bg-gradient-to-br from-primary-50 to-blue-100">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

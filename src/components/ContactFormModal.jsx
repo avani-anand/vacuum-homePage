@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { XMarkIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
@@ -54,6 +54,14 @@ const ContactFormModal = ({ isOpen, onClose }) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
+  const firstInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen && firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
+  }, [isOpen]);
+
   if (!mounted) return null;
 
   return createPortal(
@@ -71,6 +79,9 @@ const ContactFormModal = ({ isOpen, onClose }) => {
 
           {/* Modal */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -93,7 +104,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
               {/* Modal Body */}
               <div className="p-4 sm:p-6 pb-11 max-h-[85vh] overflow-y-auto">
                 {/* Title */}
-                <h3 className="text-2xl sm:text-3xl font-bold text-teal-700 mb-3 text-center">
+                <h3 id="contact-modal-title" className="text-2xl sm:text-3xl font-bold text-teal-700 mb-3 text-center">
                   LET'S GET IN TOUCH
                 </h3>
                 <p className="text-sm text-gray-600 mb-6 text-center">
@@ -114,14 +125,15 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                     >
                       Full Name <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="text"
-                      id="fullname"
-                      name="fullname"
-                      required
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-600"
-                      placeholder="Type Here"
-                    />
+                      <input
+                        ref={firstInputRef}
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        required
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 focus:bg-white outline-none transition-all placeholder:text-gray-600"
+                        placeholder="Type Here"
+                      />
                   </div>
 
                   {/* Email */}

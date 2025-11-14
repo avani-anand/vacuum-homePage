@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 // Define the type for a single category item
 export interface Category {
   id: string | number;
-  title: string;
-  subtitle?: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   icon?: React.ReactNode;
   onClick?: () => void;
   featured?: boolean;
